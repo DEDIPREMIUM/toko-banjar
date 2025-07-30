@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  cloudflare-dns-bot:
+    build: .
+    container_name: cloudflare-dns-bot
+    restart: unless-stopped
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+    volumes:
+      - ./user_data.json:/app/user_data.json
+    networks:
+      - bot-network
+
+networks:
+  bot-network:
+    driver: bridge

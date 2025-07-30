@@ -1,0 +1,30 @@
+{
+  "name": "cloudflare-dns-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot untuk mengelola DNS Cloudflare",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "dev": "nodemon bot.js",
+    "test": "node test-bot.js",
+    "docker:build": "docker build -t cloudflare-dns-bot .",
+    "docker:run": "docker run -d --name cloudflare-dns-bot -e BOT_TOKEN=$BOT_TOKEN cloudflare-dns-bot",
+    "docker:compose": "docker-compose up -d",
+    "docker:logs": "docker logs cloudflare-dns-bot -f"
+  },
+  "dependencies": {
+    "telegraf": "^4.15.6",
+    "axios": "^1.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [
+    "telegram",
+    "bot",
+    "cloudflare",
+    "dns"
+  ],
+  "author": "",
+  "license": "MIT"
+}
