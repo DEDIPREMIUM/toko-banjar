@@ -10,7 +10,17 @@ const BOT_TOKEN = process.env.BOT_TOKEN || 'YOUR_BOT_TOKEN_HERE';
 const bot = new Telegraf(BOT_TOKEN);
 
 // Middleware session
-bot.use(session());
+bot.use(session({
+    defaultSession: () => ({})
+}));
+
+// Middleware untuk memastikan session selalu ada
+bot.use((ctx, next) => {
+    if (!ctx.session) {
+        ctx.session = {};
+    }
+    return next();
+});
 
 // File untuk menyimpan data user
 const USER_DATA_FILE = 'user_data.json';
